@@ -4,10 +4,620 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mehanth Devaraj | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: black;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 15px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+        }
+
+        nav a {
+            color: white !important;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 5px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        nav a:link,
+        nav a:visited,
+        nav a:active,
+        nav a:focus {
+            color: white !important;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2db4ff;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #2db4ff !important;
+        }
+
+        section {
+            min-height: auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 100px 20px 60px;
+        }
+
+        .hero {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        /* MOVING ORBS */
+        .orb {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 0;
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        .orb1 {
+            top: -200px;
+            left: -200px;
+            background: radial-gradient(circle, rgba(100, 60, 201, 0.7), transparent 70%);
+            animation: floatOrb1 16s ease-in-out infinite alternate;
+        }
+
+        .orb2 {
+            right: -200px;
+            top: 200px;
+            background: radial-gradient(circle, rgba(112, 48, 135, 0.6), transparent 70%);
+            animation: floatOrb2 19s ease-in-out infinite alternate;
+        }
+
+        .orb3 {
+            bottom: -150px;
+            left: 10%;
+            background: radial-gradient(circle, rgba(87, 11, 68, 0.6), transparent 70%);
+            animation: floatOrb3 22s ease-in-out infinite alternate;
+        }
+
+        .orb4 {
+            top: 10%;
+            right: 15%;
+            background: radial-gradient(circle, rgba(66, 109, 216, 0.6), transparent 70%);
+            animation: floatOrb4 18s ease-in-out infinite alternate;
+        }
+
+        .orb5 {
+            bottom: 5%;
+            right: 25%;
+            background: radial-gradient(circle, rgba(163, 51, 189, 0.6), transparent 70%);
+            animation: floatOrb5 21s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatOrb1 {
+            0%   { transform: translate(0, 0) scale(1); }
+            25%  { transform: translate(150px, 80px) scale(1.1); }
+            50%  { transform: translate(-120px, 160px) scale(0.95); }
+            75%  { transform: translate(100px, -100px) scale(1.05); }
+            100% { transform: translate(-150px, 50px) scale(1); }
+        }
+
+        @keyframes floatOrb2 {
+            0%   { transform: translate(0, 0) scale(1); }
+            33%  { transform: translate(-180px, -120px) scale(1.15); }
+            66%  { transform: translate(140px, 100px) scale(0.9); }
+            100% { transform: translate(-80px, -150px) scale(1); }
+        }
+
+        @keyframes floatOrb3 {
+            0%   { transform: translate(0, 0) scale(1); }
+            20%  { transform: translate(200px, -150px) scale(1.2); }
+            40%  { transform: translate(-150px, 80px) scale(0.85); }
+            60%  { transform: translate(-100px, -200px) scale(1.1); }
+            80%  { transform: translate(180px, 120px) scale(0.95); }
+            100% { transform: translate(120px, -80px) scale(1); }
+        }
+
+        @keyframes floatOrb4 {
+            0%   { transform: translate(0, 0) scale(1); }
+            25%  { transform: translate(-130px, 180px) scale(1.15); }
+            50%  { transform: translate(170px, -90px) scale(0.9); }
+            75%  { transform: translate(-90px, -150px) scale(1.1); }
+            100% { transform: translate(140px, 70px) scale(1); }
+        }
+
+        @keyframes floatOrb5 {
+            0%   { transform: translate(0, 0) scale(1); }
+            30%  { transform: translate(-190px, -60px) scale(0.9); }
+            60%  { transform: translate(130px, 170px) scale(1.2); }
+            100% { transform: translate(-70px, -120px) scale(1); }
+        }
+
+        .content {
+            max-width: 100%;
+            z-index: 5;
+            position: relative;
+        }
+
+        .hello {
+            color: #2db4ff;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 34px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #2db4ff;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #2db4ff;
+            color: black;
+            padding: 6px 14px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .desc {
+            color: #cfcfcf;
+            line-height: 1.7;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Hero photos */
+        .photo-group {
+            position: static;
+            transform: none;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 0;
+            margin-top: 40px;
+            padding: 0 10px;
+        }
+
+        .circle-photo {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            background: #222;
+            border: 2px solid #2db4ff;
+            box-shadow: 0 0 20px rgba(45, 180, 255, 0.6);
+            margin: 0 -22px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .photo1 {
+            transform: translateY(-24px);
+            z-index: 1;
+        }
+
+        .photo3 {
+            transform: translateY(-24px);
+            z-index: 1;
+        }
+
+        .photo2 {
+            transform: translateY(24px);
+            z-index: 2;
+        }
+
+        .circle-photo:hover {
+            box-shadow: 0 0 30px rgba(45, 180, 255, 0.9);
+        }
+
+        .photo1:hover,
+        .photo3:hover {
+            transform: translateY(-24px) scale(1.06);
+        }
+
+        .photo2:hover {
+            transform: translateY(24px) scale(1.06);
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            z-index: 5;
+            position: relative;
+            width: 100%;
+        }
+
+        .about-photo-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+            max-width: 100%;
+            position: static;
+            gap: 20px;
+            margin: 0;
+        }
+
+        .stack-rectangle-photo {
+            position: static;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            display: block;
+            border-radius: 0;
+            border: 2px solid #2db4ff;
+            box-shadow: 0 0 20px rgba(45, 180, 255, 0.5);
+            transform: none;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stack-rectangle-photo:hover {
+            transform: scale(1.03);
+            border-color: white;
+            box-shadow: 0 0 30px rgba(45, 180, 255, 0.9);
+        }
+
+        .about-text {
+            margin: 0;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .about-text p {
+            color: #cfcfcf;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .about-text strong {
+            color: #2db4ff;
+        }
+
+        /* GALLERY SECTION */
+        #gallery {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 60px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .photos-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #2db4ff;
+        }
+
+        .photos-grid-2 {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gallery-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: 2px solid rgba(45, 180, 255, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(45, 180, 255, 0.2);
+            background: #111;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 15;
+        }
+
+        .gallery-photo:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(45, 180, 255, 0.4);
+        }
+
+        .gallery-load-warning {
+            display: none;
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 13px;
+            margin-top: 12px;
+            padding: 0 20px;
+        }
+
+        .gallery-load-warning.show {
+            display: block;
+        }
+
+        @media (min-width: 700px) {
+            .photos-grid-2 {
+                flex-direction: row;
+            }
+            .gallery-photo {
+                width: 50%;
+            }
+        }
+
+        /* PROJECT SECTION */
+        .projects {
+            display: flex;
+            justify-content: center;
+        }
+
+        .projects .content {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 30px;
+            z-index: 5;
+            position: relative;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(45, 180, 255, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #2db4ff;
+        }
+
+        .project-card h3 {
+            color: #2db4ff;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .project-card p {
+            color: #cfcfcf;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: rgba(45, 180, 255, 0.2);
+            color: #2db4ff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            border: 1px solid rgba(45, 180, 255, 0.3);
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact .content {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+            z-index: 5;
+            position: relative;
+        }
+
+        .contact-info { 
+            text-align: center; 
+        }
+
+        .contact-item {
+            margin-bottom: 24px;
+        }
+
+        .contact-item h3 {
+            color: #2db4ff;
+            margin-bottom: 8px;
+        }
+
+        .contact-item p {
+            color: #cfcfcf;
+            line-height: 1.6;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .contact-form { 
+            width: 100%; 
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(45, 180, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2db4ff;
+        }
+
+        .form-group textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #2db4ff;
+            color: black;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #fff;
+            transform: scale(1.02);
+        }
+
+        .social-link {
+            color: #2db4ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .email-link {
+            color: #2db4ff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .email-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Small phones */
+        @media (max-width: 380px) {
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            .circle-photo { width: 110px; height: 110px; margin: 0 -14px; }
+            .photo1, .photo3 { transform: translateY(-16px); }
+            .photo2 { transform: translateY(16px); }
+            nav a { font-size: 11px; }
+        }
+
+        /* Accessibility: respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .orb { animation: none; }
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
 </head>
 <body>
 
@@ -15,6 +625,7 @@
     <nav>
         <a href="#home">PROFILE</a>
         <a href="#about">ABOUT</a>
+        <a href="#gallery">GALLERY</a>
         <a href="#projects">PROJECT</a>
         <a href="#contact">CONTACT</a>
     </nav>
@@ -33,11 +644,11 @@
             <h1>I'm Mehanth Devaraj</h1>
             <div class="tag">Android Student</div>
             <p class="desc">
-                A passionate Android student dedicated to creating innovative and user-friendly mobile applications. With good knowledge  and in Swift, I'm constantly exploring new technologies to enhance my skills and even editing a video professionally
+                A passionate Android student dedicated to creating innovative and user-friendly mobile applications. With good knowledge in Kotlin and Swift, I'm constantly exploring new technologies to enhance my skills and even editing videos professionally.
             </p>
         </div>
 
-        <!-- CONNECTED CENTER PHOTOS: photo1 & photo3 sit higher, photo2 sits lower and overlaps both -->
+        <!-- CONNECTED CENTER PHOTOS -->
         <div class="photo-group">
             <img src="mygoogleimage.jpg" alt="Photo 1" class="circle-photo photo1" loading="lazy">
             <img src="myimage.jpeg" alt="Photo 2" class="circle-photo photo2" loading="lazy">
@@ -46,194 +657,201 @@
     </section>
 
     <!-- ABOUT SECTION -->
-  
-        </div>
-            <div class="about-text">
-                <h2>About Me</h2>
-        <div class="about-content">
-        <div class="about-photo-stack">
-    <img src="mygoogle.jpg" alt="Mehanth 1" class="stack-rectangle-photo photo-stack1" loading="lazy">
-    <img src="myzoho.jpg" alt="Mehanth 2" class="stack-rectangle-photo photo-stack2" loading="lazy">
-                <p>I'm Mehanth Devaraj, an Android student who's genuinely passionate about building apps that actually work and look good. I'm currently learning Kotlin and Android development, and I love the process of turning ideas into real applications that people can use.
-             I'm studying at Bharathiyar University, pursuing my Bachelor of Computer Science with a focus on mobile app development. Right now I'm in my second year, learning the basics while also teaching myself Android development on the side
-              Specializing in mobile app development with focus on Android technologies. From UI design to backend integration, I'm learning the complete app development process to build functional and beautiful applications.</p>
+    <section id="about" class="about">
+        <div class="content">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-photo-stack">
+                    <img src="mygoogle.jpg" alt="Mehanth 1" class="stack-rectangle-photo photo-stack1" loading="lazy">
+                    <img src="myzoho.jpg" alt="Mehanth 2" class="stack-rectangle-photo photo-stack2" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <p>I'm Mehanth Devaraj, an Android student who's genuinely passionate about building apps that actually work and look good. I'm currently learning Kotlin and Android development, and I love the process of turning ideas into real applications that people can use.
+                    <br><br>
+                    I'm studying at Bharathiyar University, pursuing my Bachelor of Computer Science with a focus on mobile app development. Right now I'm in my second year, learning the basics while also teaching myself Android development on the side.
+                    <br><br>
+                    Specializing in mobile app development with focus on Android technologies. From UI design to backend integration, I'm learning the complete app development process to build functional and beautiful applications.</p>
+                </div>
             </div>
-        </div>
-
-        <!-- TWO PHOTOS BELOW: fixed aspect-ratio boxes so they don't collapse/flash while loading -->
-        <div class="two-photos-section">
-            <h3 class="photos-title">Gallery</h3>
-            <div class="photos-grid-2">
-                <img src="photo1.png" alt="Photo 1" class="gallery-photo" loading="lazy"
-                     onerror="this.closest('.two-photos-section').querySelector('.gallery-load-warning')?.classList.add('show')">
-                <img src="photo2.png" alt="Photo 2" class="gallery-photo" loading="lazy"
-                     onerror="this.closest('.two-photos-section').querySelector('.gallery-load-warning')?.classList.add('show')">
-            </div>
-            <!-- Shows only if an image path is wrong / file missing, so it's obvious instead of a silent flash -->
-            <p class="gallery-load-warning">Some gallery images failed to load — check the file names/paths.</p>
         </div>
     </section>
-<section id="projects" class="projects">
-    <div class="content">
-        <h2>My Projects</h2>
-        <div class="project-grid">
 
-            <div class="project-card">
-                <h3>ESP CONNECTOR</h3>
-                <p>
-                    Built an ESP Connector app for my college. It is an Android app built
-                    using Kotlin and Jetpack Compose that connects and communicates with
-                    an ESP through Bluetooth and Wi-Fi.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Android</span>
-                    <span class="tech-tag">Jetpack Compose</span>
-                    <span class="tech-tag">Kotlin</span>
-                </div>
-            </div>
+    <!-- GALLERY SECTION -->
+    <section id="gallery">
+        <h2 class="photos-title">Gallery</h2>
+        <div class="photos-grid-2">
+            <img src="photo1.png" alt="Gallery Photo 1" class="gallery-photo" loading="lazy"
+                 onerror="this.closest('#gallery').querySelector('.gallery-load-warning')?.classList.add('show')">
+            <img src="photo2.png" alt="Gallery Photo 2" class="gallery-photo" loading="lazy"
+                 onerror="this.closest('#gallery').querySelector('.gallery-load-warning')?.classList.add('show')">
+        </div>
+        <p class="gallery-load-warning">Some gallery images failed to load — check the file names/paths.</p>
+    </section>
 
-            <div class="project-card">
-                <h3>Crypto Wallet</h3>
-                <p>
-                    Built a Crypto Wallet web page for my college using HTML, CSS,
-                    and JavaScript, featuring a modern UI with responsive design
-                    and interactive elements.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>Life Calculator (iOS)</h3>
-                <p>
-                    Built and published the Life Calculator app for iOS using Swift and UIKit.
-                    The app calculates birthday twin, time lived in seconds, minutes,
-                    hours, and days, along with estimated heartbeats and breaths since birth.
-                    The application is distributed worldwide.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Swift</span>
-                    <span class="tech-tag">iOS</span>
-                    <span class="tech-tag">UIKit</span>
-                    <span class="tech-tag">Worldwide Release</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>Life Calculator (Android)</h3>
-                <p>
-                    Built and published the Life Calculator app for Android using Kotlin and
-                    Jetpack Compose. The app calculates birthday twin, time lived in seconds,
-                    minutes, hours, and days, along with estimated heartbeats and breaths
-                    since birth. The application is distributed worldwide.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Android</span>
-                    <span class="tech-tag">Kotlin</span>
-                    <span class="tech-tag">Jetpack Compose</span>
-                    <span class="tech-tag">Worldwide Release</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>PhysioTrack</h3>
-                <p>
-                    Built and published PhysioTrack, a BMI (Body Mass Index) Calculator
-                    application for Android using Kotlin and Jetpack Compose. The app enables
-                    users to calculate their BMI instantly and understand their health category.
-                    The application has been successfully published on the Google Play Store
-                    and is distributed worldwide.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Android</span>
-                    <span class="tech-tag">Kotlin</span>
-                    <span class="tech-tag">Jetpack Compose</span>
-                    <span class="tech-tag">Google Play Store</span>
-                    <span class="tech-tag">Worldwide Release</span>
-                </div>
-            </div>
-
-        
-
-            <div class="project-card">
-                <h3>PixSnap (iOS)</h3>
-                <p>
-                   Built and published PixSnap, an upcoming photo and image utility
-                    application for iOS. The app is designed to provide
-                    users with a smooth and modern experience for managing and interacting
-                    with images through an elegant interface and powerful features.
-                    PixSnap will launch soon and be distributed worldwide.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">iOS</span>
-                    <span class="tech-tag">Swift</span>
-                    <span class="tech-tag">UI/UX</span>
-                    <span class="tech-tag">Worldwide Release</span>
-                </div>
-            </div>
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects">
+        <div class="content">
+            <h2>My Projects</h2>
+            <div class="project-grid">
 
                 <div class="project-card">
-                <h3>FlyPath (Coming Soon)</h3>
-                <p>
-                    Currently developing FlyPath, a GPS-based mobile application for Android and that tracks and calculates the distance between a user's
-                    starting point and destination in real time. The app will launch soon
-                    and be available worldwide.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Android</span>
-                    <span class="tech-tag">Kotlin</span>
-                    <span class="tech-tag">GPS</span>
-                    <span class="tech-tag">Coming Soon</span>
+                    <h3>ESP CONNECTOR</h3>
+                    <p>
+                        Built an ESP Connector app for my college. It is an Android app built
+                        using Kotlin and Jetpack Compose that connects and communicates with
+                        an ESP through Bluetooth and Wi-Fi.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Jetpack Compose</span>
+                        <span class="tech-tag">Kotlin</span>
+                    </div>
                 </div>
-            </div>
 
-             <div class="project-card">
-                <h3>PixSnap (Android - Coming Soon)</h3>
-                <p>
-                    Currently building PixSnap, an upcoming photo and image utility
-                    application for both Android and iOS. The app is designed to provide
-                    users with a smooth and modern experience for managing and interacting
-                    with images through an elegant interface and powerful features.
-                    PixSnap will launch soon and be distributed worldwide.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Android</span>
-                    <span class="tech-tag">Kotlin</span>
-                    <span class="tech-tag">UI/UX</span>
-                    <span class="tech-tag">Coming Soon</span>
+                <div class="project-card">
+                    <h3>Crypto Wallet</h3>
+                    <p>
+                        Built a Crypto Wallet web page for my college using HTML, CSS,
+                        and JavaScript, featuring a modern UI with responsive design
+                        and interactive elements.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
                 </div>
+
+                <div class="project-card">
+                    <h3>Life Calculator (iOS)</h3>
+                    <p>
+                        Built and published the Life Calculator app for iOS using Swift and UIKit.
+                        The app calculates birthday twin, time lived in seconds, minutes,
+                        hours, and days, along with estimated heartbeats and breaths since birth.
+                        The application is distributed worldwide.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Swift</span>
+                        <span class="tech-tag">iOS</span>
+                        <span class="tech-tag">UIKit</span>
+                        <span class="tech-tag">Worldwide Release</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Life Calculator (Android)</h3>
+                    <p>
+                        Built and published the Life Calculator app for Android using Kotlin and
+                        Jetpack Compose. The app calculates birthday twin, time lived in seconds,
+                        minutes, hours, and days, along with estimated heartbeats and breaths
+                        since birth. The application is distributed worldwide.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Jetpack Compose</span>
+                        <span class="tech-tag">Worldwide Release</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>PhysioTrack</h3>
+                    <p>
+                        Built and published PhysioTrack, a BMI (Body Mass Index) Calculator
+                        application for Android using Kotlin and Jetpack Compose. The app enables
+                        users to calculate their BMI instantly and understand their health category.
+                        The application has been successfully published on the Google Play Store
+                        and is distributed worldwide.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Jetpack Compose</span>
+                        <span class="tech-tag">Google Play Store</span>
+                        <span class="tech-tag">Worldwide Release</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>PixSnap (iOS)</h3>
+                    <p>
+                       Built and published PixSnap, an upcoming photo and image utility
+                        application for iOS. The app is designed to provide
+                        users with a smooth and modern experience for managing and interacting
+                        with images through an elegant interface and powerful features.
+                        PixSnap will launch soon and be distributed worldwide.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">iOS</span>
+                        <span class="tech-tag">Swift</span>
+                        <span class="tech-tag">UI/UX</span>
+                        <span class="tech-tag">Worldwide Release</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>FlyPath (Coming Soon)</h3>
+                    <p>
+                        Currently developing FlyPath, a GPS-based mobile application for Android that tracks and calculates the distance between a user's
+                        starting point and destination in real time. The app will launch soon
+                        and be available worldwide.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">GPS</span>
+                        <span class="tech-tag">Coming Soon</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>PixSnap (Android - Coming Soon)</h3>
+                    <p>
+                        Currently building PixSnap, an upcoming photo and image utility
+                        application for both Android and iOS. The app is designed to provide
+                        users with a smooth and modern experience for managing and interacting
+                        with images through an elegant interface and powerful features.
+                        PixSnap will launch soon and be distributed worldwide.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">UI/UX</span>
+                        <span class="tech-tag">Coming Soon</span>
+                    </div>
+                </div>
+            
             </div>
-        
         </div>
-    </div>
-</section>
-<section id="production-apps" class="projects">
-    <div class="content">
-        <h2>Production Apps</h2>
-        <div class="project-grid">
+    </section>
 
-            <div class="project-card">
-                <h3>Sky Attendance</h3>
-                <p>
-                   Worked as a team member in developing an Attendance App, a production-ready
-        application that helps students track their attendance percentage through an
-        interactive circular progress indicator. The app provides an easy and efficient
-        way to monitor attendance records and improve academic planning.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Android</span>
-                    <span class="tech-tag">Kotlin</span>
-                    <span class="tech-tag">Production App</span>
-                    <span class="tech-tag">Worldwide Release</span>
+    <!-- PRODUCTION APPS SECTION -->
+    <section id="production-apps" class="projects">
+        <div class="content">
+            <h2>Production Apps</h2>
+            <div class="project-grid">
+
+                <div class="project-card">
+                    <h3>Sky Attendance</h3>
+                    <p>
+                       Worked as a team member in developing an Attendance App, a production-ready
+                        application that helps students track their attendance percentage through an
+                        interactive circular progress indicator. The app provides an easy and efficient
+                        way to monitor attendance records and improve academic planning.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Production App</span>
+                        <span class="tech-tag">Worldwide Release</span>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- CONTACT SECTION -->
     <section id="contact" class="contact">
         <div class="content">
             <h2>Contact Me</h2>
@@ -311,794 +929,3 @@
 
 </body>
 </html>
-<style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: black;
-    color: white;
-    overflow-x: hidden;
-}
-
-img {
-    max-width: 100%;
-}
-
-/* NAVBAR */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 15px;
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.6);
-    border: none;
-}
-
-nav a {
-    color: white !important;
-    text-decoration: none;
-    font-size: 12px;
-    transition: color 0.3s ease;
-    font-weight: 500;
-    letter-spacing: 1px;
-    position: relative;
-    padding-bottom: 5px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-nav a:link,
-nav a:visited,
-nav a:active,
-nav a:focus {
-    color: white !important;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #2db4ff;
-    transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-nav a:hover {
-    color: #2db4ff !important;
-}
-
-br {
-    display: none;
-}
-
-section {
-    min-height: auto;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 100px 20px 60px;
-}
-
-.hero {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    padding-top: 100px;
-}
-
-/* MOVING ORBS */
-.orb {
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
-    pointer-events: none;
-    z-index: 0;
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-.orb1 {
-    top: -200px;
-    left: -200px;
-    background: radial-gradient(circle, rgba(100, 60, 201, 0.7), transparent 70%);
-    animation: floatOrb1 16s ease-in-out infinite alternate;
-}
-
-.orb2 {
-    right: -200px;
-    top: 200px;
-    background: radial-gradient(circle, rgba(112, 48, 135, 0.6), transparent 70%);
-    animation: floatOrb2 19s ease-in-out infinite alternate;
-}
-
-.orb3 {
-    bottom: -150px;
-    left: 10%;
-    background: radial-gradient(circle, rgba(87, 11, 68, 0.6), transparent 70%);
-    animation: floatOrb3 22s ease-in-out infinite alternate;
-}
-
-.orb4 {
-    top: 10%;
-    right: 15%;
-    background: radial-gradient(circle, rgba(66, 109, 216, 0.6), transparent 70%);
-    animation: floatOrb4 18s ease-in-out infinite alternate;
-}
-
-.orb5 {
-    bottom: 5%;
-    right: 25%;
-    background: radial-gradient(circle, rgba(163, 51, 189, 0.6), transparent 70%);
-    animation: floatOrb5 21s ease-in-out infinite alternate;
-}
-
-@keyframes floatOrb1 {
-    0%   { transform: translate(0, 0) scale(1); }
-    25%  { transform: translate(150px, 80px) scale(1.1); }
-    50%  { transform: translate(-120px, 160px) scale(0.95); }
-    75%  { transform: translate(100px, -100px) scale(1.05); }
-    100% { transform: translate(-150px, 50px) scale(1); }
-}
-
-@keyframes floatOrb2 {
-    0%   { transform: translate(0, 0) scale(1); }
-    33%  { transform: translate(-180px, -120px) scale(1.15); }
-    66%  { transform: translate(140px, 100px) scale(0.9); }
-    100% { transform: translate(-80px, -150px) scale(1); }
-}
-
-@keyframes floatOrb3 {
-    0%   { transform: translate(0, 0) scale(1); }
-    20%  { transform: translate(200px, -150px) scale(1.2); }
-    40%  { transform: translate(-150px, 80px) scale(0.85); }
-    60%  { transform: translate(-100px, -200px) scale(1.1); }
-    80%  { transform: translate(180px, 120px) scale(0.95); }
-    100% { transform: translate(120px, -80px) scale(1); }
-}
-
-@keyframes floatOrb4 {
-    0%   { transform: translate(0, 0) scale(1); }
-    25%  { transform: translate(-130px, 180px) scale(1.15); }
-    50%  { transform: translate(170px, -90px) scale(0.9); }
-    75%  { transform: translate(-90px, -150px) scale(1.1); }
-    100% { transform: translate(140px, 70px) scale(1); }
-}
-
-@keyframes floatOrb5 {
-    0%   { transform: translate(0, 0) scale(1); }
-    30%  { transform: translate(-190px, -60px) scale(0.9); }
-    60%  { transform: translate(130px, 170px) scale(1.2); }
-    100% { transform: translate(-70px, -120px) scale(1); }
-}
-
-.content {
-    max-width: 100%;
-    z-index: 5;
-    position: relative;
-}
-
-.hello {
-    color: #2db4ff;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 34px;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    color: white;
-    text-align: center;
-}
-
-h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-    color: #2db4ff;
-    text-align: center;
-}
-
-.tag {
-    display: inline-block;
-    background: #2db4ff;
-    color: black;
-    padding: 6px 14px;
-    font-size: 13px;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-}
-
-.desc {
-    color: #cfcfcf;
-    line-height: 1.7;
-    text-align: center;
-    font-size: 14px;
-}
-
-/* ===== Hero photos: bigger, connected, offset arc layout ===== */
-.photo-group {
-    position: static;
-    transform: none;
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 0;
-    margin-top: 40px;
-    padding: 0 10px;
-}
-
-/* Circle profile photos: bigger than before, overlapped with negative margin
-   so the three read as one connected group. object-fit: contain keeps the
-   whole picture visible with the dark background filling any gaps. */
-.circle-photo {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
-    background: #222;
-    border: 2px solid #2db4ff;
-    box-shadow: 0 0 20px rgba(45, 180, 255, 0.6);
-    margin: 0 -22px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex-shrink: 0;
-}
-
-/* First and third photos sit higher */
-.photo1 {
-    transform: translateY(-24px);
-    z-index: 1;
-}
-
-.photo3 {
-    transform: translateY(-24px);
-    z-index: 1;
-}
-
-/* Middle photo sits lower and in front, creating the connected arc look */
-.photo2 {
-    transform: translateY(24px);
-    z-index: 2;
-}
-
-.circle-photo:hover {
-    box-shadow: 0 0 30px rgba(45, 180, 255, 0.9);
-}
-
-.photo1:hover,
-.photo3:hover {
-    transform: translateY(-24px) scale(1.06);
-}
-
-.photo2:hover {
-    transform: translateY(24px) scale(1.06);
-}
-
-/* ABOUT SECTION */
-.about {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: center;
-    z-index: 5;
-    position: relative;
-    width: 100%;
-}
-
-.about-photo-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    max-width: 100%;
-    position: static;
-    gap: 20px;
-    margin: 0;
-}
-
-.stack-rectangle-photo {
-    position: static;
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    display: block;
-    border-radius: 0;
-    border: 2px solid #2db4ff;
-    box-shadow: 0 0 20px rgba(45, 180, 255, 0.5);
-    transform: none;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stack-rectangle-photo:hover {
-    transform: scale(1.03);
-    border-color: white;
-    box-shadow: 0 0 30px rgba(45, 180, 255, 0.9);
-}
-
-.about-text {
-    margin: 0;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.about-text p {
-    color: #cfcfcf;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    font-size: 14px;
-}
-
-.about-text strong {
-    color: #2db4ff;
-}
-
-/* Gallery: full-bleed edge-to-edge, no side gaps */
-.two-photos-section {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px;
-    padding: 30px 0;
-    z-index: 10;
-    position: relative;
-}
-
-.photos-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #2db4ff;
-}
-
-/* Stack photos one below the other, each filling full screen width */
-.photos-grid-2 {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-/* Fixed aspect-ratio box: this is what stops the "appear/disappear" flash.
-   Previously these had no defined height, so the box collapsed to 0 until
-   the image finished loading (or stayed collapsed if the src was wrong),
-   which reads as photos flickering in and out. */
-.gallery-photo {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    display: block;
-    margin: 0;
-    padding: 0;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    background: #111; /* visible placeholder if the image fails to load */
-    transition: transform 0.3s ease;
-    position: relative;
-    z-index: 15;
-}
-
-.gallery-photo:hover {
-    transform: scale(1.02);
-}
-
-/* Hidden unless a gallery image fails to load (see onerror in HTML) */
-.gallery-load-warning {
-    display: none;
-    text-align: center;
-    color: #ff6b6b;
-    font-size: 13px;
-    margin-top: 12px;
-    padding: 0 20px;
-}
-
-.gallery-load-warning.show {
-    display: block;
-}
-
-@media (min-width: 700px) {
-    .photos-grid-2 {
-        flex-direction: row;
-    }
-}
-
-/* PROJECT SECTION */
-.projects {
-    display: flex;
-    justify-content: center;
-}
-
-.projects .content {
-    width: 100%;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-top: 30px;
-    z-index: 5;
-    position: relative;
-}
-
-.project-card {
-    background: rgba(255, 255, 255, 0.07);
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid rgba(45, 180, 255, 0.2);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-6px);
-    border-color: #2db4ff;
-}
-
-.project-card h3 {
-    color: #2db4ff;
-    margin-bottom: 12px;
-    font-size: 18px;
-}
-
-.project-card p {
-    color: #cfcfcf;
-    line-height: 1.6;
-    margin-bottom: 16px;
-    font-size: 14px;
-}
-
-.project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tech-tag {
-    background: rgba(45, 180, 255, 0.2);
-    color: #2db4ff;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    border: 1px solid rgba(45, 180, 255, 0.3);
-}
-
-/* CONTACT SECTION */
-.contact {
-    display: flex;
-    justify-content: center;
-}
-
-.contact .content {
-    width: 100%;
-}
-
-.contact-content {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 30px;
-    z-index: 5;
-    position: relative;
-}
-
-.contact-info { text-align: center; }
-
-.contact-item {
-    margin-bottom: 24px;
-}
-
-.contact-item h3 {
-    color: #2db4ff;
-    margin-bottom: 8px;
-}
-
-.contact-item p {
-    color: #cfcfcf;
-    line-height: 1.6;
-    margin: 8px 0;
-    font-size: 14px;
-}
-
-.contact-form { width: 100%; }
-
-.form-group {
-    margin-bottom: 16px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 14px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(45, 180, 255, 0.2);
-    border-radius: 10px;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #2db4ff;
-}
-
-.form-group textarea {
-    height: 130px;
-    resize: vertical;
-}
-
-.submit-btn {
-    background: #2db4ff;
-    color: black;
-    padding: 14px 28px;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.submit-btn:hover {
-    background: #fff;
-    transform: scale(1.02);
-}
-
-/* SOCIAL & EMAIL LINKS */
-.social-link {
-    color: #2db4ff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.social-link:hover {
-    color: white;
-    text-decoration: underline;
-}
-
-.email-link {
-    color: #2db4ff;
-    text-decoration: none;
-    font-size: 15px;
-    transition: color 0.3s ease;
-}
-
-.email-link:hover {
-    color: white;
-    text-decoration: underline;
-}
-
-/* BUTTONS */
-.view-app-btn {
-    background: linear-gradient(135deg, #000000 0%, #106897 100%);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 12px;
-    width: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.view-app-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-}
-
-.clickable-title {
-    transition: color 0.3s ease, transform 0.3s ease;
-    display: inline-block;
-    position: relative;
-}
-
-.clickable-title:hover {
-    color: #667eea;
-    transform: translateY(-2px);
-}
-
-.clickable-title::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    transition: width 0.3s ease;
-}
-
-.clickable-title:hover::after {
-    width: 100%;
-}
-
-/* GAME ZONE SECTION */
-.gamezone {
-    display: flex;
-    justify-content: center;
-    min-height: auto;
-    align-items: center;
-}
-
-.gamezone .content {
-    width: 100%;
-    text-align: center;
-}
-
-.game-intro {
-    color: #cfcfcf;
-    margin-bottom: 30px;
-    font-size: 15px;
-}
-
-.game-container {
-    background: rgba(255, 255, 255, 0.07);
-    border: 2px solid rgba(45, 180, 255, 0.3);
-    border-radius: 20px;
-    padding: 25px 15px;
-    margin: 30px 0;
-    position: relative;
-    z-index: 5;
-    box-shadow: 0 0 40px rgba(45, 180, 255, 0.2);
-}
-
-.game-showcase {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.game-image {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    border: 3px solid #2db4ff;
-    box-shadow: 0 0 25px rgba(45, 180, 255, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.game-image:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 40px rgba(45, 180, 255, 0.8);
-}
-
-.game-info { text-align: center; }
-
-.game-info h3 {
-    color: #2db4ff;
-    font-size: 22px;
-    margin-bottom: 12px;
-}
-
-.game-info p {
-    color: #cfcfcf;
-    font-size: 15px;
-    margin-bottom: 20px;
-}
-
-.play-button {
-    display: inline-block;
-    background: #2db4ff;
-    color: black;
-    padding: 10px 30px;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid #2db4ff;
-    box-shadow: 0 5px 15px rgba(45, 180, 255, 0.3);
-}
-
-.play-button:hover {
-    background: transparent;
-    color: #2db4ff;
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(45, 180, 255, 0.5);
-}
-
-.game-details {
-    margin-top: 30px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 15px;
-    padding: 25px 15px;
-    border: 1px solid rgba(45, 180, 255, 0.2);
-}
-
-.game-details h3 {
-    color: #2db4ff;
-    font-size: 20px;
-    margin-bottom: 16px;
-}
-
-.game-details p {
-    color: #cfcfcf;
-    font-size: 14px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-.game-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 16px;
-}
-
-.game-tech .tech-tag {
-    background: rgba(45, 180, 255, 0.2);
-    color: #2db4ff;
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-size: 12px;
-    border: 1px solid rgba(45, 180, 255, 0.3);
-}
-
-/* Small phones */
-@media (max-width: 380px) {
-    h1 { font-size: 28px; }
-    h2 { font-size: 22px; }
-    .circle-photo { width: 110px; height: 110px; margin: 0 -14px; }
-    .photo1, .photo3 { transform: translateY(-16px); }
-    .photo2 { transform: translateY(16px); }
-    nav a { font-size: 11px; }
-}
-
-/* Accessibility: respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .orb { animation: none; }
-    * { transition-duration: 0.01ms !important; }
-}
-</style>
